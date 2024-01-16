@@ -1,0 +1,209 @@
+html,
+body {
+    background: #231F20;
+    margin: 0;
+}
+
+header {
+    padding: 0 0 15px;
+}
+
+.mainNav {
+    display: flex;
+    align-items: center;
+    padding: 2rem 0 0;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.mainNav a {
+    color: white;
+    font-family: pixelify sans;
+    font-size: 1rem;
+    text-decoration: none;
+    text-align: center;
+}
+
+.mainNav a:hover {
+    opacity: 0.5;
+}
+
+.navImg {
+    width: 100px;
+    height: 50px;
+}
+
+.mainLinks {
+    display: flex;
+    width: 100vw;
+    gap: 10%;
+    justify-content: center;
+    margin: 0 0 15px;
+}
+
+
+.icons {
+    color: white;
+    display: flex;
+    width: 100vw;
+    gap: 10%;
+    justify-content: center;
+}
+
+
+.icons p {
+    margin: 0;
+    font-family: pixelify sans;
+    font-size: 1rem;
+}
+
+.material-symbols-outlined {
+    font-size: 20px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
+
+.material-symbols-outlined:hover {
+    opacity: 0.5;
+    cursor: pointer;
+}
+
+footer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    margin: 2% 0 0;
+    padding: 0 0 2%;
+}
+
+footer ul {
+    list-style: none;
+    margin: 0 0 15px;
+    padding: 0;
+    text-align: center;
+}
+
+footer h3 {
+    color: white;
+    margin: 0;
+    text-align: center;
+    font-family: pixelify sans;
+    padding: 0 0 10px;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+    text-align: center;
+    font-family: EB garamond;
+    font-size: 1rem;
+}
+
+.mainFooter_section1,
+.mainFooter_section2,
+.mainFooter_section3,
+.mainFooter_section4 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.mainFooter_section5 {
+    flex-direction: column;
+}
+
+.mainFooterlinks {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+.mainFooter_section5 a img {
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 25px;
+    padding: 2%;
+
+}
+
+
+.langicon img {
+    background-color: white;
+    border: 2px solid white;
+    border-radius: 50px;
+    padding: 2%;
+    width: 9%;
+    height: 9%;
+
+}
+
+.linkedinIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.contact-info {
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    color: white;
+}
+
+.subbox h2 {
+    margin: 0 0 10px;
+    font-family: EB garamond;
+}
+
+.subscribe {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+#emailFooter,
+.button {
+    font-family: EB garamond;
+    border: none;
+    border-radius: 5px;
+}
+
+input[placeholder="Enter your email"] {
+    text-align: center;
+}
+
+.button:hover {
+    background: #453d3f;
+    color: #e6e2e3;
+}
+
+@media screen and (min-width: 600px) {
+    .mainNav {
+        flex-direction: row;
+    }
+
+    .mainLinks {
+        width: 30vw;
+        gap: 10%;
+        margin: 0;
+    }
+
+    .mainLinks1 {
+        margin: 0 0 0 10%;
+    }
+
+    .icons {
+        width: 55vw;
+        gap: 5%;
+        justify-content: flex-end;
+    }
+
+    footer {
+        flex-direction: row;
+    }
+
+    footer ul {
+        margin: 0;
+    }
+}

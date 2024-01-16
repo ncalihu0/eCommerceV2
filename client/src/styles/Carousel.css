@@ -1,0 +1,14 @@
+.carousel .slide img,
+.carousel.carousel-slider,
+.carousel.carousel-slider .control-arrow {
+    height: 80vh;
+}
+
+.carousel .thumbs-wrapper {
+    display: none !important;
+}
+
+.carousel .slide img {
+    object-fit: cover;
+    object-position: top;
+}
