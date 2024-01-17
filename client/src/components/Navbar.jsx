@@ -12,7 +12,6 @@ export default function Navbar() {
             <div className="mainLinks">
                 <Link to="/Products" className="mainLinks1">Products</Link>
                 <Link to="/Contact">Contact Us</Link>
-                <Link to='/SignIn'>Sign In</Link>
             </div>
             <Icons />
         </nav>
