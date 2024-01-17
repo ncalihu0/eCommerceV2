@@ -22,32 +22,26 @@ app.get('/', (req, res) => {
     res.send('Hello there!')
 })
 
-app.get('/price', (req, res) => {
-    const sortOrder = req.query.sortOrder;
-    if (!sortOrder) return res.json("Select a button")
-    const query = `SELECT * FROM products ORDER By productPrice ${sortOrder}`
-    database.query(query, (err, data) => {
-        if (err) return res.json(err)
-        return res.json(data)
-    })
-
-})
-
-// app.get('/priceDesc', (req, res) => {
-//     const query = "SELECT * FROM products ORDER By productPrice DESC"
-//     database.query(query, (err, data) => {
-//         if (err) return res.json(err)
-//         return res.json(data)
-//     })
-
-// })
-
 app.get('/products', (req, res) => {
-    const query = "SELECT * FROM products"
+    let query = `SELECT * FROM products`;
+    const sortOrder = req.query.sortOrder;
+    const category = req.query.category;
+    const id = req.query.id;
+    if (sortOrder) {
+        query = `SELECT * FROM products ORDER By productPrice ${sortOrder}`
+    } else if (category) {
+        query = `SELECT * FROM products WHERE productCategory = "${category}"`
+    } else if (id) {
+        query = `SELECT * FROM products WHERE idproducts IN (${id})`
+    }
+
     database.query(query, (err, data) => {
-        if (err) return res.json(err)
-        return res.json(data)
+        if (err) return res.json(err);
+        return res.json(data);
     })
+
+
+
 })
 
 app.post('/newMessage', (req, res) => {

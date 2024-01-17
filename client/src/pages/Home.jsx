@@ -1,8 +1,27 @@
 import React from 'react';
 import '../styles/Home.css';
+import '../styles/Products.css'
 import CarouselPage from '../components/Carousel';
+import { useEffect } from 'react';
+import { useState } from 'react';
+import axios from 'axios';
 
 export default function Home() {
+    const [id, setId] = useState([]);
+    const bestSellers = [1, 10, 12, 11]
+    useEffect(() => {
+        const fetchAllProducts = async () => {
+            try {
+                let url = `http://localhost:8080/products?id=${bestSellers}`
+                const res = await axios.get(url);
+                setId(res.data)
+            } catch (err) {
+                console.log(err)
+            }
+        }
+        fetchAllProducts()
+    })
+
     return (
         <>
             <main>
@@ -11,55 +30,20 @@ export default function Home() {
             <div className="gridHeader">
                 <h2>Best Sellers</h2>
             </div>
-            <section className="grid">
-                <div className="containerGrid">
-                    <div className="product">
-                        <a href="/Products" aria-label="products page">
-                            <img src="https://bananarepublicfactory.gapfactory.com/webcontent/0054/063/799/cn54063799.jpg"
-                                alt="coat" />
-                        </a>
-                        <div className="description">
-                            <h4>CLASSIC COAT</h4>
-                            <h5>$138.00</h5>
-                        </div>
-                    </div>
-                    <div className="product">
-                        <a href="/Products" aria-label="products page">
-                            <img src="https://bananarepublicfactory.gapfactory.com/webcontent/0054/199/364/cn54199364.jpg"
-                                alt="skirt" />
-                        </a>
-                        <div className="description">
-                            <h4>VEGAN LEATHER MIDI SKIRT</h4>
-                            <h5>$72.00</h5>
-                        </div>
 
-                    </div>
-
-                    <div className="product">
-                        <a href="/Products" aria-label="products page">
-                            <img src="https://bananarepublicfactory.gapfactory.com/webcontent/0054/199/342/cn54199342.jpg"
-                                alt="skirt" />
-                        </a>
-                        <div className="description">
-                            <h4>PLAID WRAP MINI SKIRT</h4>
-                            <h5>$48.00</h5>
+            <section className='productsDisplay'>
+                <div className='gridProducts'>
+                    {id.map(id => (
+                        <div className='product' key={id.idproducts}>
+                            {id.productImage && <img src={id.productImage} alt={id.productTitle} />}
+                            <div className='description'>
+                                <h4>{id.productTitle}</h4>
+                                <h5>{`$` + id.productPrice}</h5>
+                                <h5>{id.productDesc}</h5>
+                            </div>
                         </div>
-
-                    </div>
-                    <div className="product">
-                        <a href="/Products" aria-label="products page">
-                            <img src="https://bananarepublicfactory.gapfactory.com/webcontent/0054/318/795/cn54318795.jpg"
-                                alt="skirt" />
-                        </a>
-                        <div className="description">
-                            <h4>VEGAN LEATHER MINI SKIRT</h4>
-                            <h5>$51.00</h5>
-                        </div>
-                    </div>
+                    ))}
                 </div>
-
-
-
             </section>
         </>
     )

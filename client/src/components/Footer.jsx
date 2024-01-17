@@ -1,9 +1,23 @@
 import React from 'react'
 import Fbicon from '../images/fbicon.svg';
 import Twicon from '../images/twicon.svg';
+import validator from 'validator';
+import { useState } from 'react';
 
 
 export default function Footer() {
+    const [status, setStatus] = useState("Subscribe");
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+        let email = e.target.email;
+        if (!validator.isEmail(email.value)) {
+            alert('Please enter valid email!')
+        } else {
+            alert('Thank you for subscribing!')
+            email.value = '';
+        }
+    }
+
     return (
         <footer className="mainFooter">
             <section className="mainFooter_section1">
@@ -62,10 +76,10 @@ export default function Footer() {
 
                     <div className="subbox">
                         <h2>Subscribe to our Newsletter</h2>
-                        <div className="subscribe">
-                            <input type="email" id="emailFooter" placeholder="Enter your email" />
-                            <button className="button">Subscribe</button>
-                        </div>
+                        <form className="subscribe" onSubmit={handleSubmit}>
+                            <input type="email" id="emailFooter" placeholder="Enter your email" name="email" />
+                            <button className="button">{status}</button>
+                        </form>
 
                         <p id="message"></p>
                     </div>

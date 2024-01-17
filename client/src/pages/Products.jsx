@@ -5,16 +5,18 @@ import axios from 'axios';
 import '../styles/Products.css'
 
 export default function Products() {
-
     const [products, setProducts] = useState([])
     const [sortOrder, setSortOrder] = useState('');
+    const [category, setCategory] = useState('');
 
     useEffect(() => {
         const fetchAllProducts = async () => {
             try {
                 let url = 'http://localhost:8080/products'
                 if (sortOrder) {
-                    url = `http://localhost:8080/price?sortOrder=${sortOrder}`
+                    url = `http://localhost:8080/products?sortOrder=${sortOrder}`
+                } else if (category) {
+                    url = `http://localhost:8080/products?category=${category}`
                 }
                 const res = await axios.get(url);
                 setProducts(res.data)
@@ -23,33 +25,50 @@ export default function Products() {
             }
         }
         fetchAllProducts()
-    }, [sortOrder])
+    }, [sortOrder, category])
 
-    const handleAscClick = () => {
-        setSortOrder('Asc')
-    }
-    const handleDescClick = () => {
-        setSortOrder('Desc')
+    const handleSort = (sortValue) => {
+        if (sortValue === '') {
+            setSortOrder('');
+            setCategory('');
+        } else {
+            setSortOrder(sortValue);
+        }
     }
 
-    const handleDefault = () => {
-        setSortOrder('')
+    const handleCategory = (categoryValue) => {
+        setSortOrder('');
+        setCategory(categoryValue);
     }
 
     return (
         <>
-            <section className='dropdown'>
-                <span className='mainContent'>Sort &#9662;</span>
-                <section className='dropdown-content'>
-                    <a onClick={handleDefault}>Featured</a>
-                    <a onClick={handleAscClick}>Price: Low-High</a>
-                    <a onClick={handleDescClick}>Price: High-Low</a>
+            <nav className='tabs'>
+                <section className='dropdown'>
+                    <span className='mainContent'>Sort &#9662;</span>
+                    <section className='dropdown-content'>
+                        <a onClick={() => handleSort('')}>Featured</a>
+                        <a onClick={() => handleSort('Asc')}>Price: Low-High</a>
+                        <a onClick={() => handleSort('Desc')}>Price: High-Low</a>
+                    </section>
+
                 </section>
 
-            </section>
-            {/* <button onClick={handleDefault} className='clikedButton'>Featured</button>
-            <button onClick={handleAscClick} className='clikedButton'>Price: Low-High</button>
-            <button onClick={handleDescClick} className='clikedButton'>Price: High-Low</button> */}
+                <section className='dropdown'>
+                    <span className='mainContent'>Category &#9662;</span>
+                    <section className='dropdown-content'>
+                        <a onClick={() => handleCategory('Coat')} >Coat</a>
+                        <a onClick={() => handleCategory('Blazer')} >Blazer</a>
+                        <a onClick={() => handleCategory('Jacket')}>Jacket</a>
+                        <a onClick={() => handleCategory('Shirtdress')}>Shirtdress</a>
+                        <a onClick={() => handleCategory('Skirt')} >Skirt</a>
+                        <a onClick={() => handleCategory('Shirt')}>Shirt</a>
+                    </section>
+
+                </section>
+            </nav>
+
+
 
             <section className='productsDisplay'>
                 <div className='gridProducts'>

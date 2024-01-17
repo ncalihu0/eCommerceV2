@@ -12,3 +12,13 @@
     object-fit: cover;
     object-position: top;
 }
+
+
+@media screen and (max-width: 900px) {
+
+    .carousel .slide img,
+    .carousel.carousel-slider,
+    .carousel.carousel-slider .control-arrow {
+        height: 50vh;
+    }
+}
