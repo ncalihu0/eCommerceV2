@@ -12,6 +12,14 @@ export default function Navbar() {
             <div className="mainLinks">
                 <Link to="/Products" className="mainLinks1">Products</Link>
                 <Link to="/Contact">Contact Us</Link>
+
+                <section className='content'>
+                    <Link>Entry</Link>
+                    <section className='links'>
+                        <Link to="/Signin">Sign In</Link>
+                        <Link to="/Signup">Sign Up</Link>
+                    </section>
+                </section>
             </div>
             <Icons />
         </nav>

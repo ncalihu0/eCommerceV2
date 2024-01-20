@@ -6,6 +6,8 @@ import Head from './components/Head'
 import Home from "./pages/Home";
 import Products from './pages/Products';
 import Contact from './pages/Contact';
+import Signin from './pages/Signin';
+import Signup from './pages/Signup';
 
 
 function App() {
@@ -18,6 +20,8 @@ function App() {
           <Route path="/" element={<Home />}></Route>
           <Route path="/Products" element={<Products />}></Route>
           <Route path="/Contact" element={<Contact />}></Route>
+          <Route path='/Signin' element={<Signin />}></Route>
+          <Route path='/Signup' element={<Signup />}></Route>
         </Routes>
         <Footer></Footer>
 

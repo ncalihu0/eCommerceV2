@@ -69,6 +69,33 @@ header {
     cursor: pointer;
 }
 
+
+.links {
+    display: none;
+    position: absolute;
+    overflow: auto;
+    box-shadow: 0px 10px 10px 0px rgba(0, 0, 0, 0.4);
+    background-color: #231F20;
+}
+
+.content:hover .links {
+    display: block;
+    z-index: 5;
+}
+
+.links a {
+    display: block;
+    color: white;
+    padding: 5px;
+    text-decoration: none;
+    text-align: center;
+    font-family: pixelify sans;
+}
+
+.links a:hover {
+    background-color: #6e6e6e1e;
+}
+
 footer {
     display: flex;
     flex-direction: column;
@@ -169,7 +196,7 @@ footer a {
     border-radius: 5px;
 }
 
-input[placeholder="Enter your email"] {
+.subscribe input[placeholder="Enter your email"] {
     text-align: center;
 }
 

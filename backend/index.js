@@ -56,6 +56,42 @@ app.post('/newMessage', (req, res) => {
     })
 })
 
+app.post('/signIn', (req, res) => {
+    let password = req.body.password
+    let username = req.body.username
+    const query = `SELECT * FROM registerUsers WHERE userName = "${username}"`
+
+    database.query(query, (err, data) => {
+        if (err) {
+            console.error(err);
+            res.status(500).json({ error: "Internal server error" });
+        } else {
+            if (data.length > 0) {
+                if (data[0].userPassword === password) {
+                    res.status(200).json({ message: `Welcome back ${username}` });
+                } else {
+                    res.json({ error: "Wrong password" });
+                }
+            } else {
+                res.json({ error: "Wrong username" });
+            }
+        }
+    });
+})
+
+app.post('/signUp', (req, res) => {
+    const query = "INSERT INTO registerUsers (`userName`, `userEmail`, `userPassword`) VALUES (?)"
+    const values = [req.body.username, req.body.mail, req.body.password]
+    database.query(query, [values], (err, data) => {
+        if (err) {
+            res.status(500).json({ error: 'Internal server error' });
+        } else {
+            res.status(200).json({ message: 'User has been created' })
+        }
+    })
+})
+
+
 app.listen(port, (err) => {
     if (err) throw err;
     console.log(`server is working on ${port}`)
