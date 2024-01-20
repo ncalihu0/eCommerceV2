@@ -12,11 +12,11 @@ export default function Products() {
     useEffect(() => {
         const fetchAllProducts = async () => {
             try {
-                let url = 'http://localhost:8080/products'
+                let url = 'https://byshop-backend.onrender.com/products'
                 if (sortOrder) {
-                    url = `http://localhost:8080/products?sortOrder=${sortOrder}`
+                    url = `https://byshop-backend.onrender.com/products?sortOrder=${sortOrder}`
                 } else if (category) {
-                    url = `http://localhost:8080/products?category=${category}`
+                    url = `https://byshop-backend.onrender.com/products?category=${category}`
                 }
                 const res = await axios.get(url);
                 setProducts(res.data)

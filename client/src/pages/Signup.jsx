@@ -21,7 +21,7 @@ export default function Signup() {
             return alert('Password must have at least 8 characters, including at least one uppercase letter, one lowercase letter, and one number')
         } else {
             try {
-                let res = await axios.post("http://localhost:8080/signUp", details);
+                let res = await axios.post("https://byshop-backend.onrender.com/signUp", details);
                 let result = await res.data
                 if (result.message) {
                     alert(result.message)

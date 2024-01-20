@@ -12,7 +12,7 @@ export default function Home() {
     useEffect(() => {
         const fetchAllProducts = async () => {
             try {
-                let url = `http://localhost:8080/products?id=${bestSellers}`
+                let url = `https://byshop-backend.onrender.com/products?id=${bestSellers}`
                 const res = await axios.get(url);
                 setId(res.data)
             } catch (err) {

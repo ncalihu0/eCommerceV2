@@ -14,7 +14,7 @@ export default function Signin() {
         }
 
         try {
-            let res = await axios.post("http://localhost:8080/signIn", details);
+            let res = await axios.post("https://byshop-backend.onrender.com/signIn", details);
             let result = await res.data
             if (result.message) {
                 alert(result.message)

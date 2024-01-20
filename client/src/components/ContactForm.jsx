@@ -29,7 +29,7 @@ export default function ContactForm() {
             return alert('Enter correct message format')
         } else {
             try {
-                let res = await axios.post("http://localhost:8080/newMessage", details)
+                let res = await axios.post("https://byshop-backend.onrender.com/newMessage", details)
                 setStatus("Submit");
                 let result = await res.data;
                 alert(result.message);
