@@ -6,10 +6,10 @@ const cors = require('cors')
 const bodyParser = require('body-parser')
 
 const database = mysql.createConnection({
-    host: 'localhost',
-    user: 'root',
-    password: 'PTV5573@rose',
-    database: "myProducts"
+    host: 'sql5.freesqldatabase.com',
+    user: 'sql5678246',
+    password: 'eatjTk51It',
+    database: "sql5678246"
 })
 
 // app.use(express.json);
