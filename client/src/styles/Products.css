@@ -1,6 +1,7 @@
 .productsDisplay {
     display: flex;
     justify-content: center;
+    margin-top: 25px;
 }
 
 .gridProducts {
@@ -123,5 +124,9 @@ h5 {
     .description {
         height: 400px;
         width: 270px;
+    }
+
+    .productsDisplay {
+        margin-top: 0;
     }
 }
